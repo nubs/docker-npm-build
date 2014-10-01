@@ -11,7 +11,6 @@ RUN useradd --uid 59944 --create-home --comment "Build User" build
 
 USER build
 ENV HOME /home/build
-ENV COMPOSER_HOME $HOME/.composer
 
 # Set the umask to 002 so that the group has write access inside and outside the
 # container.
