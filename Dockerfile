@@ -17,6 +17,9 @@ ENV COMPOSER_HOME $HOME/.composer
 # container.
 ADD umask.sh $HOME/umask.sh
 
+# Setup PATH to prioritize local npm bin ahead of system PATH.
+ENV PATH node_modules/.bin:$PATH
+
 VOLUME ["/code"]
 WORKDIR /code
 
