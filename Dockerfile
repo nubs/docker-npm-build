@@ -19,7 +19,6 @@ ADD umask.sh $HOME/umask.sh
 # Setup PATH to prioritize local npm bin ahead of system PATH.
 ENV PATH node_modules/.bin:$PATH
 
-VOLUME ["/code"]
 WORKDIR /code
 
 ENTRYPOINT ["/home/build/umask.sh"]
