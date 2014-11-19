@@ -9,6 +9,9 @@ RUN pacman --sync --refresh --sysupgrade --noconfirm --noprogressbar --quiet && 
 # necessary.  Specify the uid so that it is unique including from the host.
 RUN useradd --uid 59944 --create-home --comment "Build User" build
 
+RUN mkdir /code && chown build:build /code
+WORKDIR /code
+
 USER build
 ENV HOME /home/build
 
@@ -18,8 +21,6 @@ ADD umask.sh $HOME/umask.sh
 
 # Setup PATH to prioritize local npm bin ahead of system PATH.
 ENV PATH node_modules/.bin:$PATH
-
-WORKDIR /code
 
 ENTRYPOINT ["/home/build/umask.sh"]
 CMD ["npm", "install"]
