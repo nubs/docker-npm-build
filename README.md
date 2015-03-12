@@ -1,5 +1,5 @@
 # docker-npm-build
-This is a base image for building [node.js][node.js] [npm][npm] repositories
+This is a base image for building [node.js][node.js] [npm][npm] repositories.
 
 ## Purpose
 This docker image builds on top of Arch Linux's base/archlinux image for the
