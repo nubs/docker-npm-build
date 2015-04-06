@@ -3,7 +3,7 @@ FROM base/archlinux:latest
 MAINTAINER Spencer Rinehart <anubis@overthemonkey.com>
 
 # Update system and install node.js/npm.
-RUN pacman --sync --refresh --sysupgrade --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet nodejs
+RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet archlinux-keyring pacman && pacman-db-upgrade && pacman --sync --sysupgrade --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet nodejs
 
 # Create a separate user to run npm as.  Root access shouldn't typically be
 # necessary.  Specify the uid so that it is unique including from the host.
