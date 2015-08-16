@@ -79,5 +79,9 @@ docker run -i -t --rm -v "$(pwd):/code" my-code
 docker run -i -t --rm -v "$(pwd):/code" my-code npm update
 ```
 
+## License
+docker-npm-build is licensed under the MIT license.  See [LICENSE](LICENSE)
+for the full license text.
+
 [node.js]: http://nodejs.org/
 [npm]: https://www.npmjs.org/
