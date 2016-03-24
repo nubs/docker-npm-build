@@ -5,7 +5,12 @@ MAINTAINER Spencer Rinehart <anubis@overthemonkey.com>
 RUN curl -o /etc/pacman.d/mirrorlist "https://www.archlinux.org/mirrorlist/?country=all&protocol=https&ip_version=6&use_mirror_status=on" && sed -i 's/^#//' /etc/pacman.d/mirrorlist
 
 # Update system and install node.js/npm.
-RUN pacman-key --refresh-keys && pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet archlinux-keyring openssl pacman && pacman-db-upgrade && pacman --sync --sysupgrade --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet nodejs npm
+RUN pacman-key --refresh-keys && \
+    pacman --sync --refresh --noconfirm --noprogressbar --quiet && \
+    pacman --sync --noconfirm --noprogressbar --quiet archlinux-keyring openssl pacman && \
+    pacman-db-upgrade && \
+    pacman --sync --sysupgrade --noconfirm --noprogressbar --quiet && \
+    pacman --sync --noconfirm --noprogressbar --quiet nodejs npm
 
 # Create a separate user to run npm as.  Root access shouldn't typically be
 # necessary.  Specify the uid so that it is unique including from the host.
