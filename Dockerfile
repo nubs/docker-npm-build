@@ -12,22 +12,12 @@ RUN pacman-key --refresh-keys && \
     pacman --sync --sysupgrade --noconfirm --noprogressbar --quiet && \
     pacman --sync --noconfirm --noprogressbar --quiet nodejs npm
 
-# Create a separate user to run npm as.  Root access shouldn't typically be
-# necessary.  Specify the uid so that it is unique including from the host.
-RUN useradd --uid 59944 --create-home --comment "Build User" build
-
-RUN mkdir /code && chown build:build /code
+RUN mkdir /code
 WORKDIR /code
 
-USER build
-ENV HOME /home/build
-
-# Set the umask to 002 so that the group has write access inside and outside the
-# container.
-ADD umask.sh $HOME/umask.sh
+ENV HOME /root
 
 # Setup PATH to prioritize local npm bin ahead of system PATH.
 ENV PATH node_modules/.bin:$PATH
 
-ENTRYPOINT ["/home/build/umask.sh"]
 CMD ["npm", "install"]
