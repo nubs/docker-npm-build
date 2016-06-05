@@ -2,8 +2,8 @@
 This is a base image for building [node.js][node.js] [npm][npm] repositories.
 
 ## Purpose
-This docker image builds on top of Arch Linux's base/archlinux image for the
-purpose of building projects using npm.  It provides several key features:
+This docker image builds on top of a base Alpine Linux image for the purpose
+of building projects using npm.  It provides several key features:
 
 * Access to the build location will be in the volume located at `/code`.  This
   directory will be the default working directory.
